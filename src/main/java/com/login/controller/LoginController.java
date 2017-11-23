@@ -1,9 +1,17 @@
 package com.login.controller;
 
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 用于login logout signIn register的请求处理
@@ -25,12 +33,16 @@ public class LoginController {
 	}
 	
 	/**
-	 * 登录请求
+	 * 登录请求 只返回数据时加上@ResponseBody
 	 */
 	@RequestMapping("/signIn")
-	public String aloginCheck(Map<String, Object> map) {
-		map.put("text", "登录成功");
-		return "abc/text";
+	@ResponseBody
+	public String aloginCheck(Map<String, Object> map, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("username="+request.getParameter("username")
+				+ "\tpassword="+request.getParameter("password"));
+
+//		map.put("text", "登录成功");
+		return "登录成功";
 	}
 	
 	/**

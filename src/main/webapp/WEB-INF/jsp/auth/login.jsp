@@ -21,9 +21,8 @@
 
 
 
-
 </head>
-<body >
+<body  >
 <div class="container" >
 <div style="width:30%; text-align: center; margin: 0 auto;">
 	<form class="form-signin" action="./signIn">       

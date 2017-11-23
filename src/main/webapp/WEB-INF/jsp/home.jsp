@@ -13,18 +13,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>welcome page</title>
+<link rel="stylesheet" href="<%=basePath %>static/bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="<%=basePath %>static/bootstrap/css/bootstrap-responsive.css" type="text/css" />
+<script type="text/javascript" src="<%=basePath %>static/bootstrap/js/bootstrap.js"></script>
 
-<style type="text/css">
-
-a{
-	color: red;
-	background-color: blue;
-}
-
-
-
-</style>
-<link rel="stylesheet" href="<%=basePath %>static/css/test.css" type="text/css" />
 
 </head>
 <body>

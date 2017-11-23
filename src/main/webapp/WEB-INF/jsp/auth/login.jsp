@@ -25,7 +25,7 @@
 <body  >
 <div class="container" >
 <div style="width:30%; text-align: center; margin: 0 auto;">
-	<form class="form-signin" action="./signIn">       
+	<form class="form-signin" action="./signIn" method="post">       
       <h1 class="form-signin-heading">Please Login</h1>
       <input type="text" class="form-control" name="username" placeholder="Login Name"  autofocus=""/>
       <input type="password" class="form-control" name="password" placeholder="Password" />    

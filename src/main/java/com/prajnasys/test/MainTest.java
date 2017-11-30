@@ -25,35 +25,17 @@ public class MainTest {
 		req.setCardno(cordno);
 		Object json = JSON.toJSON(req);
 		String content = JSON.toJSONString(json);
-	
-		try {
-			String estr = AesUtil.encryptStr(content, TestConst.KEY);
-			System.out.println(estr);
-			Map<String, String> queryParas = new HashMap<>();
-//			queryParas.put("Account", TestConst.ACCOUNT);
-//			queryParas.put("Key", TestConst.KEY);
-			queryParas.put("content", estr);
-			String rt = HttpUtil.authGet(TestConst.BR_URL+TestConst.INFOVERIFY, 
-				queryParas, TestConst.ACCOUNT, TestConst.KEY);
-			System.out.println("1:\n"+rt);
-		}catch(Exception e){
 			
-		}
 		try {
 			String estr = AesUtil.encryptStr(content, TestConst.KEY);
-			System.out.println(estr);
+			System.out.println("加密的content:\n"+estr);
 			String str = TestConst.BR_URL+TestConst.INFOVERIFY+"?account="+TestConst.ACCOUNT+"&content="+estr;
-//			System.out.println("\n"+str);
-//			String str = "http://58.250.152.93:18084/brapi/services/infoVerify?account=gmxa01&content=7F85B1E25555735CB4674F979E5FA9901FAA7286E4FFE971DAF156877A965F2E39EE793A2A23CAE71B80D11BB9325E0A025572486B36701B18131E5A419688612A8247A6AB31E483CB959510B38BBAF3";
-//						  http://58.250.152.93:18084/brapi/services/infoVerify?account=gmxa01&7F85B1E25555735CB4674F979E5FA9901FAA7286E4FFE971DAF156877A965F2E39EE793A2A23CAE71B80D11BB9325E0A025572486B36701B18131E5A419688612A8247A6AB31E483CB959510B38BBAF3
-
-			
 			String rstr = HttpUtil.get(str);
-			System.out.println("2:\n"+rstr);
+			System.out.println("返回数据:\n"+rstr);
 			JSONObject obj = JSON.parseObject(rstr);
-			String eee = obj.getString("data");
-			System.out.println(eee);
-			String dstr = AesUtil.decryptStr(eee, TestConst.KEY);
+			String edata = obj.getString("data");
+			System.out.println("返回结果中的e(data):\n"+edata);
+			String dstr = AesUtil.decryptStr(edata, TestConst.KEY);
 			System.out.println("解密:\n"+dstr);
 		} catch (Exception e) {
 			e.printStackTrace();

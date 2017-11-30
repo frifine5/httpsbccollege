@@ -1,10 +1,6 @@
 package com.prajnasys.test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Test;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.prajnasys.common.AesUtil;

@@ -118,6 +118,16 @@
             <version>2.4</version>
         </dependency>
         
+        
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.6</version>
+		</dependency>
+        
+        
+        
 	
 	</dependencies>
   <!-- dependencyManagement 顶级依赖管理，当遇到jar包冲突的时候，会以这个里面的jar版本为准 -->

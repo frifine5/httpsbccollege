@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60"   debug="false" >
+  <!-- 控制台打印日志的相关配置 --> 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> 
+    <!-- 日志格式 -->
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] [%-100class:%-4line] - %m%n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- 文件保存日志的相关配置 --> 
+  <appender name="ERROR-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>/opt/logs/hoofoo/error.log</file>
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%class:%line] - %m%n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <!-- 循环政策：基于时间创建日志文件 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/opt/logs/hoofoo/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+
+<appender name="HEART-OUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>/opt/logs/hoofoo/heartbeat.log</file>
+    <encoder>
+        <pattern>%d{yyyy-MM-dd HH:mm:ss}  - %m%n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>DEBUG</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 日志文件名格式 -->
+      <fileNamePattern>/opt/logs/hoofoo/heartbeat/heartbeat.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>15</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+
+  <!-- 指定包的日志输出级别 -->
+  <logger name="com.ht.MinitorSchedulTask" level="debug" >
+ 	<appender-ref ref="HEART-OUT" />
+  </logger>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="ERROR-OUT" />
+  </root>
+  
+</configuration>
